@@ -12,7 +12,7 @@ function routeParamsChanged(route, prevState, nextState) {
 }
 
 function routeQueryChanged(prevState, nextState) {
-  return prevState.location.search !== nextState.location.search
+  return prevState.location && nextState.location && prevState.location.search !== nextState.location.search
 }
 
 /**
@@ -20,7 +20,7 @@ function routeQueryChanged(prevState, nextState) {
  * the change from prevState to nextState. We leave routes if either
  * 1) they are not in the next state or 2) they are in the next state
  * but their params have changed (i.e. /users/123 => /users/456) or
- * 3) they are in the next state but the query has changed 
+ * 3) they are in the next state but the query has changed
  * (i.e. /search?query=foo => /search?query=bar)
  *
  * leaveRoutes are ordered starting at the leaf route of the tree
